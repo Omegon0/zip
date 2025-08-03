@@ -16,7 +16,7 @@ on run {targetBuddyPhone, targetMessage}
     end tell
 end run
 `,
-    [["‭4433559430"], [clip]]
+    [["‭1234567890], [clip]]
   );
   await showHUD(res);
 }
