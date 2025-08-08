@@ -1,4 +1,5 @@
 import { Form, ActionPanel, Action, showToast } from "@raycast/api";
+import { runAppleScript } from "@raycast/utils";
 
 type Values = {
   filename: string;
@@ -7,8 +8,15 @@ type Values = {
 
 export default function Command() {
   function handleSubmit(values: Values) {
-    console.log(values);
-    showToast({ title: "Submitted form", message: "See logs for submitted values" });
+    const res = runAppleScript(
+      `
+on run {filetitle, filecontents}
+	set newline to "./newlog.zsh " & filetitle & " " & filecontents
+	do shell script newline
+end run
+`,
+      [values.filename, [values.filecontent]]
+    );
   }
 
   return (
@@ -25,3 +33,4 @@ export default function Command() {
     </Form>
   );
 }
+
