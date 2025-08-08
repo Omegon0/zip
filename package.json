@@ -8,18 +8,19 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "send-message",
-      "title": "Send message",
-      "description": "sends message to recipient in contacts",
-      "mode": "no-view"
-    },
-    {
-      "name": "baadu",
-      "title": "baadu",
-      "description": "send message to baadu",
-      "mode": "no-view"
+      "name": "message",
+      "title": "Message",
+      "description": "sends a message to recipient (phone number)",
+      "mode": "view"
     }
-  ],
+      ,
+    {
+      "name": "log",
+      "title": "Log",
+      "description": "Logs to a new txt file in ~/Documents/Logs",
+      "mode": "view"
+    }
+      ],
   "dependencies": {
     "@raycast/api": "^1.102.3",
     "@raycast/utils": "^1.17.0",
