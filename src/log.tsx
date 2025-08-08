@@ -1,4 +1,4 @@
-import { Form, ActionPanel, Action, showToast } from "@raycast/api";
+import { Form, ActionPanel, Action, showToast, showHUD } from "@raycast/api";
 import { runAppleScript } from "@raycast/utils";
 
 type Values = {
@@ -11,12 +11,15 @@ export default function Command() {
     const res = runAppleScript(
       `
 on run {filetitle, filecontents}
-	set newline to "./newlog.zsh " & filetitle & " " & filecontents
-	do shell script newline
+set newline to "~/Documents/Coding/HackClub/zip/src/newlog.sh " & filetitle & " " & filecontents
+do shell script newline
 end run
 `,
       [values.filename, [values.filecontent]]
     );
+
+    showToast({ title: "Log created", message: "Log can be found in ~/Documents/logs" });
+    showHUD("Log saved");
   }
 
   return (
@@ -33,4 +36,3 @@ end run
     </Form>
   );
 }
-
